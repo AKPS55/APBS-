@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise for Ankita</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* SCROLL DISABLED FOR ALL PAGES BY DEFAULT */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* SCROLL ENABLED ONLY FOR LETTER PAGE */
+body.letter-page-scroll {
+    overflow: auto;
+}
+
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Initial Password Screen */
+#initialPasswordScreen {
+    display: flex;
+}
+
+.password-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 50px 40px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 40px rgba(255, 0, 102, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+.password-box h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #ff0066, #ffcc00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.password-box p {
+    color: #ddd;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.input-group {
+    position: relative;
+    margin: 25px 0;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 18px 20px 18px 50px;
+    font-size: 18px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #ff0066;
+    box-shadow: 0 0 20px rgba(255, 0, 102, 0.3);
+}
+
+.input-group i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff0066;
+    font-size: 20px;
+}
+
+/* Buttons - Enhanced */
+.btn {
+    padding: 16px 35px;
+    background: linear-gradient(45deg, #ff0066, #ff3385);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(255, 0, 102, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(255, 0, 102, 0.4);
+    background: linear-gradient(45deg, #ff3385, #ff0066);
+}
+
+.btn:active {
+    transform: translateY(-2px);
+}
+
+/* Countdown Screen - Enhanced */
+#countdownScreen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: none;
+}
+
+.countdown-container {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 800px;
+    width: 90%;
+}
+
+.countdown-container h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #fffacd;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.countdown-container h1 i {
+    color: #ffcc00;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.birthday-info {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 20px;
+    margin: 25px 0;
+    font-size: 1.3rem;
+    backdrop-filter: blur(10px);
+}
+
+#timer {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 30px 0;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(45deg, #fff, #ffcc00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+.timer-units {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.unit {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px 25px;
+    border-radius: 15px;
+    min-width: 120px;
+    backdrop-filter: blur(10px);
+}
+
+.unit-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffcc00;
+}
+
+.unit-label {
+    font-size: 1.1rem;
+    color: #ddd;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Password Screen - Enhanced */
+#passwordScreen {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    display: none;
+}
+
+.heart-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 30px;
+}
+
+.heart {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff0066;
+    transform: rotate(45deg);
+    animation: heartbeat 1.5s infinite;
+}
+
+.heart:before,
+.heart:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff0066;
+    border-radius: 50%;
+}
+
+.heart:before {
+    top: -50%;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: -50%;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: rotate(45deg) scale(1); }
+    50% { transform: rotate(45deg) scale(1.1); }
+}
+
+.lock-icon {
+    font-size: 3.5rem;
+    color: #ffcc00;
+    margin-bottom: 20px;
+    animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Surprise Popup - Enhanced */
+#surprisePopup {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    display: none;
+}
+
+.surprise-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(25px);
+    border-radius: 30px;
+    padding: 50px;
+    max-width: 700px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: popIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.surprise-container h1 {
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.name-highlight {
+    background: linear-gradient(45deg, #ff0066, #ffcc00);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 0 10px;
+}
+
+#birthdayMessage {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    margin: 30px 0;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.letter-container {
+    margin-top: 40px;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Letter Page - Pink Design - SCROLL ENABLED */
+#letterPage {
+    display: none;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+}
+
+/* Letter page ke liye alag container styling */
+.letter-page-container {
+    min-height: 100vh;
+    display: block !important; /* Override flex display */
+    padding: 20px;
+    justify-content: flex-start !important; /* Start from top */
+}
+
+.letter-wrapper {
+    max-width: 800px;
+    width: 90%;
+    margin: 20px auto 40px; /* Added margin for scroll */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.letter-wrapper:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.letter-header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.letter-header h1 {
+    font-size: 2.8rem;
+    color: #ff0066;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.letter-header p {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.ribbon {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.ribbon span {
+    position: absolute;
+    top: 30px;
+    right: -30px;
+    width: 200px;
+    padding: 10px 0;
+    background: #ff0066;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transform: rotate(45deg);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.letter-content {
+    position: relative;
+    z-index: 1;
+    color: #333;
+    line-height: 1.8;
+    font-size: 1.3rem;
+    text-align: justify;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    border-left: 5px solid #ff0066;
+}
+
+.letter-content h2 {
+    color: #ff0066;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    text-align: center;
+}
+
+.letter-content p {
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+}
+
+.letter-signature {
+    text-align: right;
+    margin-top: 40px;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #ff0066;
+    font-weight: bold;
+}
+
+/* Confetti Canvas */
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: none;
+    z-index: 1000;
+}
+
+/* Celebration Message */
+.celebration {
+    font-size: 2.5rem;
+    color: #ffcc00;
+    margin: 30px 0;
+    animation: colorChange 3s infinite alternate;
+}
+
+@keyframes colorChange {
+    0% { color: #ff0066; }
+    33% { color: #ffcc00; }
+    66% { color: #00ffcc; }
+    100% { color: #9966ff; }
+}
+
+/* Countdown Finished Message */
+.countdown-finished {
+    font-size: 3.5rem;
+    color: #ffcc00;
+    margin: 40px 0;
+    animation: pulseGlow 1.5s infinite;
+    text-shadow: 0 0 20px rgba(255, 204, 0, 0.7);
+}
+
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .password-box, .countdown-container, .surprise-container {
+        padding: 30px 20px;
+        width: 95%;
+    }
+    
+    .password-box h2, .countdown-container h1, .surprise-container h1 {
+        font-size: 1.8rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    #timer {
+        font-size: 3rem;
+        padding: 15px;
+    }
+    
+    .timer-units {
+        gap: 15px;
+    }
+    
+    .unit {
+        min-width: 80px;
+        padding: 10px 15px;
+    }
+    
+    .unit-value {
+        font-size: 1.8rem;
+    }
+    
+    .btn {
+        padding: 14px 25px;
+        font-size: 1.1rem;
+    }
+    
+    .countdown-finished {
+        font-size: 2.5rem;
+    }
+    
+    .letter-wrapper {
+        padding: 20px;
+        margin: 10px auto 30px;
+    }
+    
+    .letter-content {
+        padding: 20px;
+        font-size: 1.1rem;
+    }
+    
+    .letter-header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Floating balloons */
+.balloon {
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    border-radius: 50%;
+    animation: floatBalloon 15s infinite linear;
+    z-index: -1;
+}
+
+.balloon:before {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes floatBalloon {
+    0% { transform: translateY(100vh) translateX(0); }
+    100% { transform: translateY(-100px) translateX(20px); }
+}
+</style>
+</head>
+<body class="no-scroll"> <!-- Default: No scroll -->
+
+<!-- Background Animation -->
+<div class="background-animation" id="starsContainer"></div>
+
+<!-- Floating Balloons -->
+<div id="balloonsContainer"></div>
+
+<!-- Initial Password Screen -->
+<div id="initialPasswordScreen" class="container">
+    <div class="password-box">
+        <h2><i class="fas fa-lock"></i> Secret Privacy Password</h2>
+        <p>Enter the secret code to access the birthday surprise</p>
+        <div class="input-group">
+            <i class="fas fa-key"></i>
+            <input type="password" id="initialPasswordInput" placeholder="Enter password here...">
+        </div>
+        <button class="btn" id="initialPasswordBtn">
+            <i class="fas fa-unlock-alt"></i> Enter Secret Zone
+        </button>
+    </div>
+</div>
+
+<!-- Countdown Screen -->
+<div id="countdownScreen" class="container">
+    <div class="countdown-container">
+        <h1><i class="fas fa-birthday-cake"></i> Birthday Countdown for Ankita! <i class="fas fa-gift"></i></h1>
+        
+        <div class="birthday-info">
+            <i class="fas fa-calendar-alt"></i> December 19, 2025 <!-- DATE CHANGE -->
+            <i class="fas fa-clock" style="margin-left: 20px;"></i> 12:00 AM <!-- TIME CHANGE -->
+        </div>
+        
+        <div id="timerMessage"></div>
+        
+        <div id="timer">Loading...</div>
+        
+        <div class="timer-units">
+            <div class="unit">
+                <div class="unit-value" id="days">00</div>
+                <div class="unit-label">Days</div>
+            </div>
+            <div class="unit">
+                <div class="unit-value" id="hours">00</div>
+                <div class="unit-label">Hours</div>
+            </div>
+            <div class="unit">
+                <div class="unit-value" id="minutes">00</div>
+                <div class="unit-label">Minutes</div>
+            </div>
+            <div class="unit">
+                <div class="unit-value" id="seconds">00</div>
+                <div class="unit-label">Seconds</div>
+            </div>
+        </div>
+        
+        <p style="margin-top: 30px; color: #ffcc00; font-size: 1.2rem;">
+            <i class="fas fa-heart"></i> Get ready for an amazing surprise!
+        </p>
+    </div>
+</div>
+
+<!-- Password Screen -->
+<div id="passwordScreen" class="container">
+    <div class="password-box">
+        <div class="heart-container">
+            <div class="heart"></div>
+        </div>
+        
+        <div class="lock-icon">
+            <i class="fas fa-lock"></i>
+        </div>
+        
+        <h2><i class="fas fa-heart"></i> Secret Password <i class="fas fa-heart"></i></h2>
+        <p>This is the final step to unlock the birthday magic!</p>
+        
+        <div class="input-group">
+            <i class="fas fa-heart"></i>
+            <input type="password" id="passwordInput" placeholder="Enter secret password...">
+        </div>
+        
+        <button class="btn" id="passwordBtn">
+            <i class="fas fa-magic"></i> Unlock Birthday Magic
+        </button>
+        
+        <p style="margin-top: 20px; color: #ffcc00; font-size: 1rem;">
+            Hint: It's a 3-letter code that's very special!
+        </p>
+    </div>
+</div>
+
+<!-- Surprise Popup -->
+<div id="surprisePopup" class="container">
+    <div class="surprise-container">
+        <h1><i class="fas fa-star"></i> Happy Birthday, <span class="name-highlight">Ankita!</span> <i class="fas fa-star"></i></h1>
+        
+        <div class="celebration">🎂 🎁 🎈 🎉 ✨</div>
+        
+        <p id="birthdayMessage">
+            Happy Birthday, Ankita! 🎉🎂<br>
+            Wishing you a day full of smiles, happiness, and everything that makes you feel special.<br>
+            Hope your birthday is as amazing as you are! 💖
+        </p>
+        
+        <button class="btn" id="letterBtn">
+            <i class="fas fa-envelope-open-text"></i> Read My Special Letter 💌
+        </button>
+    </div>
+</div>
+
+<!-- Letter Page -->
+<div id="letterPage">
+    <div class="letter-wrapper">
+        <div class="ribbon">
+            <span>For Ankita 💖</span>
+        </div>
+        
+        <div class="letter-header">
+            <h1><i class="fas fa-heart"></i> My Special Letter <i class="fas fa-heart"></i></h1>
+            <p>A heartfelt message for the most special person</p>
+        </div>
+        
+        <div class="letter-content">
+            <h2>💌 Dear Ankita, 💌</h2>
+            
+            <p>
+                Aaj ka din special hai because its about you. Main chahta hoon ki tumhari smile hamesha aise hi bright rahe aur tumhara har din khushi aur excitement se bhara ho.
+            </p>
+            
+            <p>
+                Mujhe shayad hamesha shabd nahi milte apni feelings express karne ke liye but sach ye hai ki tum mere liye bahut special ho. Tumhari simple si baatein tumhara smile aur tumhari innocent yet confident vibe sab kuch mujhe bahut pasand hai. Aur sach kahun to tum mere liye abhut special ho Tum meri zindagi me ek aisi special cheez ho jo shayad main shabd me kabhi poori tarah nahi bata paunga.
+            </p>
+            
+            <p>
+                Aaj ke din main bas ye wish karta hoon ki tum hamesha khush raho safe raho aur apni dreams follow karo. Tumhari happiness mere liye bahut important hai, aur main chahta hoon ki tum hamesha smile karte raho.
+            </p>
+            
+            <p>
+                Have a super amazing birthday Ankita! 🎂✨
+            </p>
+            
+            <div class="letter-signature">
+                With all my love,<br>
+                <strong>Ansh</strong> ❤️
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confetti Canvas -->
+<canvas id="confettiCanvas"></canvas>
+
+<script>
+// Create stars background
+function createStars() {
+    const container = document.getElementById('starsContainer');
+    for(let i = 0; i < 150; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.width = Math.random() * 3 + 'px';
+        star.style.height = star.style.width;
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        star.style.animationDuration = Math.random() * 3 + 2 + 's';
+        container.appendChild(star);
+    }
+}
+
+// Create balloons
+function createBalloons() {
+    const container = document.getElementById('balloonsContainer');
+    const colors = ['#ff0066', '#ffcc00', '#00ccff', '#9966ff', '#00ff99'];
+    
+    for(let i = 0; i < 8; i++) {
+        const balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        balloon.style.left = Math.random() * 90 + 'vw';
+        balloon.style.animationDelay = Math.random() * 15 + 's';
+        balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        container.appendChild(balloon);
+    }
+}
+
+// Initial Privacy Password
+const initialPassword = '12345';
+const initialScreen = document.getElementById('initialPasswordScreen');
+const countdownScreen = document.getElementById('countdownScreen');
+
+document.getElementById('initialPasswordBtn').onclick = () => {
+    let input = document.getElementById('initialPasswordInput').value;
+    if(input === initialPassword){
+        initialScreen.style.display = 'none';
+        countdownScreen.style.display = 'flex';
+        createStars();
+        createBalloons();
+        startCountdown(); // Start countdown after entering password
+    } else {
+        alert('❌ Wrong password! Try again.');
+        document.getElementById('initialPasswordInput').value = '';
+        document.getElementById('initialPasswordInput').focus();
+    }
+};
+
+// Countdown Timer - UPDATED: December 19, 2025, 12:00 AM (midnight)
+const birthdayDate = new Date('December 19, 2025 00:00:00').getTime(); // DATE & TIME CHANGE
+const timerEl = document.getElementById('timer');
+const timerMessage = document.getElementById('timerMessage');
+const daysEl = document.getElementById('days');
+const hoursEl = document.getElementById('hours');
+const minutesEl = document.getElementById('minutes');
+const secondsEl = document.getElementById('seconds');
+const passwordScreen = document.getElementById('passwordScreen');
+const surprisePopup = document.getElementById('surprisePopup');
+const letterPage = document.getElementById('letterPage');
+
+let countdownInterval;
+let birthdayAlreadyPassed = false; // NEW: Track if birthday has already passed
+
+function startCountdown() {
+    // Clear any existing interval
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+    }
+    
+    countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Call immediately to avoid delay
+}
+
+function updateCountdown() {
+    let now = new Date().getTime();
+    let diff = birthdayDate - now;
+
+    // Check if countdown has finished OR if birthday has already passed
+    if (diff <= 0) {
+        clearInterval(countdownInterval);
+        
+        // Show birthday message and switch to password screen
+        timerMessage.innerHTML = '<div class="countdown-finished">🎉 IT\'S YOUR BIRTHDAY! 🎉</div>';
+        timerEl.style.display = 'none';
+        document.querySelector('.timer-units').style.display = 'none';
+        
+        // Hide the normal timer and show celebration
+        timerEl.innerHTML = "🎂 HAPPY BIRTHDAY! 🎂";
+        timerEl.style.fontSize = "3.5rem";
+        timerEl.style.color = "#ffcc00";
+        
+        // Automatically switch to password screen after 6 seconds ONLY WHEN COUNTDOWN FINISHES
+        setTimeout(() => {
+            if(countdownScreen.style.display === 'flex') {
+                countdownScreen.style.display = 'none';
+                passwordScreen.style.display = 'flex';
+            }
+        }, 6000); // 6 SECONDS
+        
+        return;
+    }
+
+    // Calculate time units
+    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    // Update individual elements with padding
+    daysEl.textContent = days.toString().padStart(2, '0');
+    hoursEl.textContent = hours.toString().padStart(2, '0');
+    minutesEl.textContent = minutes.toString().padStart(2, '0');
+    secondsEl.textContent = seconds.toString().padStart(2, '0');
+    
+    // Update main timer
+    timerEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    
+    // Update timer message
+    if (days === 0) {
+        if (hours === 0) {
+            timerMessage.innerHTML = '<div class="celebration">🎂 Just a few minutes left! 🎂</div>';
+        } else {
+            timerMessage.innerHTML = '<div class="celebration">🎉 The Celebration Begins Today! 🎉</div>';
+        }
+    } else if (days === 1) {
+        timerMessage.innerHTML = '<div class="celebration">✨ Just 1 Day to Go! ✨</div>';
+    } else {
+        timerMessage.innerHTML = '<div class="celebration">🎉 The Celebration Begins In 🎉</div>';
+    }
+}
+
+// Check immediately if birthday has already passed
+function checkBirthdayStatus() {
+    let now = new Date().getTime();
+    let diff = birthdayDate - now;
+    
+    if (diff <= 0) {
+        // Birthday has already passed or is today
+        // We'll let the user go to countdown screen and show celebration
+        birthdayAlreadyPassed = true;
+    }
+}
+
+// Secret Password
+const correctPass = 'AKP';
+document.getElementById('passwordBtn').onclick = () => {
+    let input = document.getElementById('passwordInput').value.toUpperCase();
+    if(input === correctPass){
+        passwordScreen.style.display = 'none';
+        surprisePopup.style.display = 'flex';
+        startConfetti();
+    } else {
+        alert('❌ Wrong Password! Hint: It starts with "A"');
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('passwordInput').focus();
+    }
+}
+
+// Letter Button - Go to Letter Page (ENABLE SCROLL)
+document.getElementById('letterBtn').onclick = () => {
+    surprisePopup.style.display = 'none';
+    letterPage.style.display = 'block';
+    // Enable scroll for letter page
+    document.body.className = 'letter-page-scroll';
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
+
+// Enhanced Confetti
+function startConfetti() {
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.display = 'block';
+
+    const particles = [];
+    const particleCount = 300;
+    const colors = ['#ff0066', '#ffcc00', '#00ccff', '#9966ff', '#00ff99', '#ff66cc'];
+
+    // Create particles
+    for(let i = 0; i < particleCount; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            r: Math.random() * 10 + 5,
+            d: Math.random() * particleCount,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            tilt: Math.floor(Math.random() * 10) - 10,
+            tiltAngle: 0,
+            tiltAngleIncrement: Math.random() * 0.1 + 0.01
+        });
+    }
+
+    function drawParticle(particle) {
+        ctx.beginPath();
+        ctx.lineWidth = particle.r / 2;
+        ctx.strokeStyle = particle.color;
+        ctx.moveTo(particle.x + particle.tilt + particle.r / 2, particle.y);
+        ctx.lineTo(particle.x + particle.tilt, particle.y + particle.r);
+        ctx.lineTo(particle.x + particle.tilt + particle.r, particle.y + particle.r);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fillStyle = particle.color;
+        ctx.fill();
+    }
+
+    function updateParticle(particle) {
+        particle.tiltAngle += particle.tiltAngleIncrement;
+        particle.y += (Math.cos(particle.d) + 3 + particle.r / 2) / 2;
+        particle.x += Math.sin(particle.d);
+        particle.tilt = Math.sin(particle.tiltAngle) * 15;
+        
+        if(particle.y > canvas.height) {
+            particle.x = Math.random() * canvas.width;
+            particle.y = -10;
+            particle.tilt = Math.floor(Math.random() * 10) - 10;
+        }
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach(particle => {
+            drawParticle(particle);
+            updateParticle(particle);
+        });
+        
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+}
+
+// Enter key support for password fields
+document.getElementById('initialPasswordInput').addEventListener('keypress', (e) => {
+    if(e.key === 'Enter') {
+        document.getElementById('initialPasswordBtn').click();
+    }
+});
+
+document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+    if(e.key === 'Enter') {
+        document.getElementById('passwordBtn').click();
+    }
+});
+
+// Focus on input when page loads
+window.onload = () => {
+    document.getElementById('initialPasswordInput').focus();
+    document.body.className = 'no-scroll'; // Ensure no scroll on load
+    checkBirthdayStatus(); // Check if birthday has already passed
+};
+</script>
+</body>
+</html>
